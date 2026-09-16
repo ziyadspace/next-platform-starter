@@ -1,0 +1,29 @@
+name: Install Ghallif Swiss redesign
+
+on:
+  push:
+    paths:
+      - ghallif-swiss-source.b64
+
+permissions:
+  contents: write
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replace project source
+        shell: bash
+        run: |
+          set -euo pipefail
+          base64 --decode ghallif-swiss-source.b64 > /tmp/ghallif-swiss.zip
+          mkdir -p /tmp/ghallif-swiss
+          unzip -q /tmp/ghallif-swiss.zip -d /tmp/ghallif-swiss
+          find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -a /tmp/ghallif-swiss/. .
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Redesign Ghallif in Swiss retro style"
+          git push
