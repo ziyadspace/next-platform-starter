@@ -13,16 +13,21 @@ const options: Array<{ id: DemoMaterial; label: string; method: string }> = [
 
 export function HeroMaterialDemo() {
   const [material, setMaterial] = useState<DemoMaterial>("paper");
+  const activeOption = options.find((item) => item.id === material);
+
   return (
     <div className="hero-product-stage" aria-label="تجربة خامات بوكس نورة">
-      <div className={`hero-box is-${material}`}>
-        <div className="box-lid">
-          <div className="box-artwork"><Sparkles size={24} /><b>نورة</b><small>مبروك التخرج</small><span>2026</span></div>
+      <div className="hero-stage-label" aria-hidden="true"><span>01</span> معاينة الخامة</div>
+      <div className="hero-box-scene">
+        <div className={`hero-box is-${material}`}>
+          <div className="box-lid">
+            <div className="box-artwork"><Sparkles size={24} /><b>نورة</b><small>مبروك التخرج</small><span>2026</span></div>
+          </div>
+          <div className="box-front"><span>صُمّم لكِ</span></div>
+          <div className="box-side"><i /></div>
         </div>
-        <div className="box-front"><span>صُمّم لكِ</span></div>
-        <div className="box-side" />
       </div>
-      <div className="hero-floating-note"><Check size={16} /><span><b>{options.find((item) => item.id === material)?.method}</b>تتغيّر المعالجة حسب الخامة</span></div>
+      <div className="hero-floating-note"><Check size={16} /><span><b>{activeOption?.method}</b>تتغيّر المعالجة حسب الخامة</span></div>
       <div className="material-demo-switch" role="group" aria-label="اختر خامة المعاينة">
         {options.map((option) => (
           <button key={option.id} type="button" className={material === option.id ? "is-active" : ""} onClick={() => setMaterial(option.id)}>
@@ -30,7 +35,7 @@ export function HeroMaterialDemo() {
           </button>
         ))}
       </div>
-      <div className="drag-note"><MousePointer2 size={15} />جرّب تغيير الخامة</div>
+      <div className="drag-note"><MousePointer2 size={15} />اختر الخامة وشاهد الفرق</div>
     </div>
   );
 }
