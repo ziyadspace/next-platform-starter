@@ -34,7 +34,7 @@
 .auth-tabs button { border-radius: 3px; }
 .auth-tabs button.is-active { background: var(--retro-yellow); color: var(--ink); box-shadow: 2px 2px 0 var(--ink); }
 .demo-login { border: 2px dashed var(--ink); border-radius: 6px; background: #dcecea; }
-.auth-preview-box { --box-depth: 55px; filter: drop-shadow(15px 22px 10px rgba(0,0,0,.24)); }
+.auth-preview-box { --box-depth: 55px; filter: none; }
 .auth-box-lid { border: 2px solid var(--ink); border-radius: 6px; box-shadow: none; transform: translateZ(var(--box-depth)); }
 .auth-box-front {
   width: 100%;
@@ -47,7 +47,7 @@
   border-top: 0;
 }
 .design-thumb { border: 2px solid var(--ink); border-radius: 7px; background: #b8d8d4; }
-.design-thumb-box { --box-depth: 30px; filter: drop-shadow(8px 10px 5px rgba(24,53,47,.2)); }
+.design-thumb-box { --box-depth: 30px; filter: none; }
 .design-thumb-lid { transform: translateZ(var(--box-depth)); border: 2px solid var(--ink); border-radius: 4px; box-shadow: none; }
 .design-thumb-front {
   width: 100%;
