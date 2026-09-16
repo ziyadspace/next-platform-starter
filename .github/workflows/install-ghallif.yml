@@ -3,7 +3,7 @@ name: Install Ghallif prototype
 on:
   push:
     paths:
-      - ghallif-source.zip
+      - ghallif-source.b64
 
 permissions:
   contents: write
@@ -15,12 +15,14 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v5
 
-      - name: Replace starter with Ghallif source
+      - name: Rebuild and install Ghallif source
         shell: bash
         run: |
           set -euo pipefail
           source_dir="$(mktemp -d)"
-          unzip -q ghallif-source.zip -d "$source_dir"
+          archive_path="$RUNNER_TEMP/ghallif-source.zip"
+          base64 --decode ghallif-source.b64 > "$archive_path"
+          unzip -q "$archive_path" -d "$source_dir"
           find "$GITHUB_WORKSPACE" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf -- {} +
           cp -a "$source_dir"/. "$GITHUB_WORKSPACE"/
 
