@@ -234,7 +234,7 @@
   width: 370px;
   height: 232px;
   transform: rotateX(58deg) rotateZ(-29deg) translateZ(22px);
-  filter: drop-shadow(22px 30px 16px rgba(24, 53, 47, .17));
+  filter: none;
 }
 
 .hero-box:hover {
@@ -508,7 +508,7 @@
 
 .mini-product {
   --box-depth: 45px;
-  filter: drop-shadow(14px 19px 10px rgba(24, 53, 47, .2));
+  filter: none;
 }
 .mini-lid,
 .mini-front,
