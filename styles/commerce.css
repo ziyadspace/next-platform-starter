@@ -107,3 +107,32 @@
 }
 .track-hero .shell > span { color: var(--retro-yellow); }
 .track-hero input { border: 2px solid var(--ink); }
+
+/* Swiss + Retro surfaces */
+.auth-card,
+.cart-item,
+.cart-summary,
+.checkout-summary,
+.checkout-section,
+.success-product,
+.success-facts,
+.track-placeholder,
+.track-card {
+  border: 1.5px solid var(--ink);
+  border-radius: 0;
+  box-shadow: none;
+}
+.auth-tabs,
+.demo-login,
+.quantity-mini,
+.address-options button,
+.delivery-options button,
+.payment-options button,
+.checkout-safe,
+.track-trust { border-radius: 0; box-shadow: none; }
+.design-thumb { border-width: 1.5px; border-radius: 0; }
+.design-thumb-side {
+  transform-origin: left center;
+  transform: rotateY(-90deg);
+  border-left: 2px solid var(--ink);
+}

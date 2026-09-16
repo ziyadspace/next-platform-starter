@@ -29,3 +29,17 @@
 .saved-design-card > .design-thumb { border-width: 0 0 2px; border-radius: 0; }
 .recent-designs > div,
 .address-mini-list > div { border: 2px solid var(--ink); border-radius: 6px; background: #fffdf7; }
+
+/* Swiss + Retro account grid */
+.account-nav,
+.stats-grid article,
+.dashboard-section,
+.saved-design-card,
+.order-card,
+.detail-card,
+.recent-designs > div,
+.address-mini-list > div {
+  border: 1.5px solid var(--ink);
+  border-radius: 0;
+  box-shadow: none;
+}

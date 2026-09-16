@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Box, Check, Eye, Layers3, MapPin, MousePointer2, PackageCheck, Palette, ShieldCheck, Sparkles, Truck } from "lucide-react";
+import { ArrowLeft, Box, Check, Eye, Layers3, MapPin, MousePointer2, PackageCheck, Palette, ShieldCheck, Truck } from "lucide-react";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { HeroMaterialDemo } from "@/components/home/HeroMaterialDemo";
@@ -31,7 +31,6 @@ export default function HomePage() {
       <section className="hero-section">
         <div className="shell hero-grid">
           <div className="hero-copy">
-            <div className="eyebrow"><Sparkles size={16} /> بوكس واحد يحمل اسم مناسبتك</div>
             <h1>كل مناسبة لها اسم.<br /><span>غلّفها به.</span></h1>
             <p>صمّم بوكسك بطريقتك، اختر خامته وتصميمه، أضف الاسم أو العبارة، وشاهد النتيجة مباشرة قبل الطلب.</p>
             <div className="hero-actions">
@@ -55,7 +54,7 @@ export default function HomePage() {
           <div className="section-heading centered"><span>من فكرتك إلى يدك</span><h2>أربع خطوات، وبوكسك جاهز</h2><p>بدون مراسلات طويلة أو انتظار عروض أسعار.</p></div>
           <div className="steps-grid">
             {["اختر البوكس", "اختر الخامة والتصميم", "خصّصه باسمك", "شاهد النتيجة واطلبه"].map((step, index) => (
-              <article className="step-card" key={step}><div>{String(index + 1).padStart(2, "0")}</div><h3>{step}</h3><p>{["ثلاثة هياكل وتسعة مقاسات.", "ورق مطبوع أو حفر على الخشب والجلد.", "اسم واحد أو اسم مختلف لكل قطعة.", "معاينة ثلاثية الأبعاد وسعر فوري."][index]}</p>{index < 3 && <ArrowLeft className="step-arrow" />}</article>
+              <article className="step-card" key={step}><div>{String(index + 1).padStart(2, "0")}</div><h3>{step}</h3><p>{["ثلاثة هياكل وتسعة مقاسات.", "ورق مطبوع أو حفر على الخشب والجلد.", "اسم واحد أو اسم مختلف لكل قطعة.", "معاينة ثلاثية الأبعاد وسعر فوري."][index]}</p></article>
             ))}
           </div>
         </div>

@@ -105,3 +105,46 @@
 .segmented button { border-radius: 3px; }
 .segmented button.is-active { background: var(--retro-blue); color: var(--ink); box-shadow: 2px 2px 0 var(--ink); }
 .truck-symbol { border: 2px solid var(--ink); border-radius: 4px; background: var(--retro-orange); color: var(--ink); }
+
+/* Swiss + Retro configurator grid */
+.configurator-page { background: var(--paper); }
+.configurator-topbar,
+.step-nav,
+.configurator-controls,
+.controls-heading,
+.controls-footer { border-color: var(--ink); }
+.step-nav { background: var(--cream); }
+.step-nav button,
+.step-nav button span,
+.production-chip,
+.live-chip,
+.preview-toolbar,
+.box-option,
+.size-options > button,
+.material-option,
+.color-options button,
+.template-options button,
+.segmented,
+.engraving-controls,
+.multi-name-card,
+.quantity-picker,
+.quantity-presets button,
+.occasion-date,
+.price-breakdown,
+.preflight,
+.review-card,
+.dimension-note,
+.production-note,
+.adaptation-banner,
+.delivery-estimate {
+  border-radius: 0;
+  box-shadow: none;
+}
+.three-preview { border-width: 1.5px; border-radius: 0; box-shadow: none; }
+.step-nav button.is-current,
+.box-option.is-selected,
+.size-options > button.is-selected,
+.material-option.is-selected,
+.color-options button.is-selected,
+.template-options button.is-selected,
+.quantity-presets button.is-selected { box-shadow: none; }
