@@ -1,43 +1,140 @@
-# Next.js on Netlify Platform Starter
+# غلّف — Ghallif Prototype
 
-[Live Demo](https://nextjs-platform-starter.netlify.app/)
+نموذج تفاعلي كامل لمنصة سعودية لطلب بوكسات شخصية بكميات قليلة. يغطي المسار من الصفحة الرئيسية وتسجيل الدخول إلى المصمم ثلاثي الأبعاد، السلة، الدفع التجريبي، تأكيد الطلب، الحساب والتتبع.
 
-A modern starter based on Next.js 16 (App Router), Tailwind, and [Netlify Core Primitives](https://docs.netlify.com/core/overview/#develop) (Edge Functions, Image CDN, Blob Store).
+## المزايا
 
-In this site, Netlify Core Primitives are used both implictly for running Next.js features (e.g. Route Handlers, image optimization via `next/image`, and more) and also explicitly by the user code.
+- واجهة عربية RTL متجاوبة لسطح المكتب والجوال والتابلت.
+- 3 هياكل بوكسات و9 تركيبات مقاسات.
+- 7 خامات و27 إعدادًا تصميميًا.
+- معاينة Three.js مباشرة مع تدوير وتقريب وفتح/إغلاق.
+- محرك عرض إنتاجي يفرق بين:
+  - الورق: طباعة حبر مسطحة وملونة.
+  - الخشب: حفر ليزر أحادي اللون، داكن وغائر قليلًا.
+  - الجلد: حفر/ضغط تونالي غائر يتكيف مع لون الجلد.
+- اسم واحد أو اسم مختلف لكل بوكس.
+- تسعير فوري، خصومات كمية، ضريبة 15% وشحن.
+- تسجيل تجريبي، تصاميم محفوظة، عناوين، سلة وطلبات محفوظة في المتصفح.
+- صفحات حساب وتتبع بحالة إنتاج تتغير بين «قيد الطباعة» و«قيد الحفر بالليزر».
+- لا يحتاج إلى قاعدة بيانات أو مفاتيح API أو متغيرات بيئة.
 
-Implicit usage means you're using any Next.js functionality and everything "just works" when deployed - all the plumbing is done for you. Explicit usage is framework-agnostic and typically provides more features than what Next.js exposes.
+## التقنية
 
-## Deploying to Netlify
+- Next.js 16.3.5 App Router
+- React 19 + TypeScript
+- Tailwind CSS 4 مع نظام CSS مخصص للهوية
+- React Three Fiber + Three.js + Drei
+- Zustand مع `localStorage`
+- React Hook Form + Zod
+- Lucide React
+- IBM Plex Sans Arabic محمّل محليًا من حزمة Fontsource
 
-Click the button below to deploy this template to your Netlify account.
+## التشغيل محليًا
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/next-platform-starter)
+المتطلبات: Node.js 20.9 أو أحدث.
 
-## Developing Locally
-
-1. Clone this repository, then run `npm install` in its root directory.
-
-2. For the starter to have full functionality locally (e.g. edge functions, blob store), please ensure you have an up-to-date version of Netlify CLI. Run:
-
+```bash
+npm install
+npm run dev
 ```
-npm install netlify-cli@latest -g
+
+ثم افتح الرابط الذي يظهر في الطرفية.
+
+لإنشاء نسخة إنتاج:
+
+```bash
+npm run build
+npm start
 ```
 
-3. Link your local repository to the deployed Netlify site. This will ensure you're using the same runtime version for both local development and your deployed site.
+للتحقق من المسارات الإنتاجية الأساسية:
 
-```
-netlify link
-```
-
-4. Then, run the Next.js development server via Netlify CLI:
-
-```
-netlify dev
+```bash
+npm run verify:routes
 ```
 
-If your browser doesn't navigate to the site automatically, visit [localhost:8888](http://localhost:8888).
+## الحساب التجريبي
 
-## Resources
+- البريد: `demo@ghallif.sa`
+- كلمة المرور: `Demo123!`
 
-- Check out the [Next.js on Netlify docs](https://docs.netlify.com/frameworks/next-js/overview/)
+يمكن أيضًا إنشاء حساب محلي جديد من صفحة التسجيل.
+
+## البنية
+
+```text
+app/                  App Router والصفحات والمسارات الديناميكية
+components/3d/        مشاهد البوكسات والخامات والنصوص
+components/configurator/ واجهة خطوات المصمم
+components/commerce/  السلة، الدفع، التسعير والعروض المصغرة
+components/account/   الحساب والتصاميم والطلبات
+components/orders/    التتبع والخط الزمني
+data/                 الكتالوج والقوالب والبيانات التجريبية
+lib/rendering/        محرك تفسير طريقة الإنتاج
+lib/pricing/          محرك التسعير المركزي
+lib/orders/           حالات الطلب والتقديرات
+store/                حالة التطبيق والحفظ المحلي
+public/brand/         شعار غلّف الرسمي كما تم تزويده
+styles/               نظام التصميم والاستجابة
+```
+
+## بنية العرض ثلاثي الأبعاد
+
+يتم تحميل حزمة 3D عند فتح المصمم فقط، ولا تحملها الصفحة الرئيسية. المشاهد مبنية بهندسة بارامترية وليست ملفات نماذج خارجية:
+
+- `MagneticBox`: جسم مجوف وغطاء مفصلي متحرك.
+- `DrawerBox`: غلاف خارجي ودرج داخلي متحرك.
+- `LidBaseBox`: قاعدة وغطاء منفصل يرتفع ويميل.
+
+تُنشأ خامات الورق والخشب والجلد إجرائيًا داخل المتصفح باستخدام Canvas textures، ثم تُتلف textures القديمة عند التغيير لتقليل استهلاك الذاكرة. جميع أوامر WebGL وCanvas و`devicePixelRatio` معزولة داخل مكونات Client محملة ديناميكيًا، لذلك لا تعمل أثناء SSR.
+
+## محرك مظهر الإنتاج
+
+`lib/rendering/productionArtwork.ts` هو المصدر المركزي لتحديد طريقة الإنتاج. ويستخدمه مولّد textures بدل توزيع منطق التصنيع على مكونات الواجهة.
+
+- `full-color-ink`: يحتفظ بألوان القالب والنص مع عمق صفر تقريبًا.
+- `burned-engraving`: يحول التكوين إلى قناع تونالي مع تعتيم، خشونة و`bumpScale` سالب على الخشب.
+- `tonal-deboss`: يولد درجة حفر مشتقة من لون الجلد مع حفر خفيف وظلال داخلية.
+
+قوالب الألوان يمكن تكييفها للحفر دون تغيير التكوين العام أو موضع الاسم. كما تتغير أدوات التخصيص نفسها: اختيار لون النص للورق، ودرجة الحفر للخشب والجلد.
+
+## البيانات والحفظ
+
+يحفظ Zustand هذه البيانات تحت المفتاح `ghallif-prototype-v1` في `localStorage`:
+
+- المستخدم التجريبي والجلسة
+- مسودة المصمم
+- التصاميم المحفوظة
+- السلة
+- عناوين التوصيل
+- الطلبات وحالات التتبع
+
+لإعادة البيانات الأولية، افتح **حسابي → بيانات الحساب → إعادة ضبط النموذج**. ويمكن كذلك حذف المفتاح السابق من تخزين المتصفح.
+
+## القيود المقصودة
+
+- الدفع، المصنع، شركة الشحن والرسائل النصية محاكاة فقط.
+- لا يوجد Backend أو قاعدة بيانات، لذلك تبقى البيانات على المتصفح والجهاز الحاليين.
+- معاينة الحفر تمثيل بصري للقرار الإنتاجي وليست ملف تصنيع أو إثباتًا نهائيًا للطباعة.
+- لا يصدر النموذج ملفات قص أو حفر أو فواتير ضريبية.
+
+### Deploy to Netlify
+
+1. Push the repository to GitHub.
+2. Open Netlify.
+3. Choose **Add new project**.
+4. Import the GitHub repository.
+5. Allow Netlify to detect Next.js automatically.
+6. Use:
+
+   **Build command:**
+
+   ```text
+   npm run build
+   ```
+
+7. Deploy.
+
+Netlify will use its current automatic Next.js/OpenNext integration. Do not add a manually pinned legacy runtime. The default prototype requires no environment variables and works immediately after deployment.
+
+Direct links and refreshes are supported for all App Router routes, including `/design`, `/track`, `/account/orders/demo-order`, and `/order/success/demo-order`.
