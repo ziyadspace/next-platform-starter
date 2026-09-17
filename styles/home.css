@@ -810,10 +810,12 @@
 
 /* Final geometry and alignment corrections */
 .hero-box .box-side {
-  transform: translateZ(var(--box-depth)) rotateY(90deg);
-  backface-visibility: visible;
+  left: 0;
+  right: auto;
+  transform: rotateY(-90deg);
+  backface-visibility: hidden;
   background-color: color-mix(in srgb, var(--box-base) 68%, #574b3c);
-  border-left: 0;
+  border-left: 2px solid var(--ink);
 }
 .hero-box .box-side::after {
   content: "";
@@ -823,9 +825,11 @@
   background: rgba(23, 29, 26, .28);
 }
 .mini-side {
-  transform: translateZ(var(--box-depth)) rotateY(90deg);
-  backface-visibility: visible;
-  border-left: 0;
+  left: 0;
+  right: auto;
+  transform: rotateY(-90deg);
+  backface-visibility: hidden;
+  border-left: 2px solid var(--ink);
 }
 .occasion-cloud { align-items: center; }
 .occasion-cloud .occasion-1,
