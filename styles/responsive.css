@@ -249,7 +249,7 @@
   .hero-box .box-side {
     width: var(--box-depth);
     height: 100%;
-    transform: translateZ(var(--box-depth)) rotateY(90deg);
+    transform: rotateY(-90deg);
   }
   .steps-grid { gap: 0; }
   .step-card,
@@ -270,7 +270,7 @@
   .hero-box .box-side {
     width: var(--box-depth);
     height: 100%;
-    transform: translateZ(var(--box-depth)) rotateY(90deg);
+    transform: rotateY(-90deg);
   }
 }
 
